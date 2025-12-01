@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenAPI Preview Test</title>
+  <link rel="stylesheet" href="node_modules/@stoplight/elements/styles.min.css">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    #content {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    #elements {
+      width: 100%;
+      height: 100%;
+    }
+    
+    #status {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 12px;
+      z-index: 10000;
+    }
+  </style>
+</head>
+<body>
+  <div id="status">Loading...</div>
+  <div id="content">
+    <elements-api
+      id="elements"
+      apiDescriptionDocument="openapi: 3.0.0
+info:
+  title: Test API
+  version: 1.0.0
+  description: A test API for validation
+paths:
+  /users:
+    get:
+      summary: Get users
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+  /posts:
+    get:
+      summary: Get posts
+      responses:
+        '200':
+          description: Success
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string"
+      layout="sidebar"
+      router="hash"
+      style="width: 100%; height: 100%;"
+    />
+  </div>
+
+  <script src="node_modules/@stoplight/elements/web-components.min.js"></script>
+  <script>
+    const status = document.getElementById('status');
+    const elementsApi = document.getElementById('elements');
+    
+    // Log when script loads
+    console.log('Script loaded');
+    status.textContent = 'Script loaded';
+    
+    // Check if elements-api is defined
+    setTimeout(() => {
+      if (customElements.get('elements-api')) {
+        console.log('elements-api custom element is registered');
+        status.textContent = 'Elements API registered ✓';
+      } else {
+        console.error('elements-api custom element NOT registered');
+        status.textContent = 'ERROR: Elements API not registered';
+      }
+    }, 1000);
+    
+    // Listen for errors
+    window.addEventListener('error', (event) => {
+      console.error('Error:', event.error);
+      status.textContent = 'ERROR: ' + event.error.message;
+      status.style.background = '#c00';
+    });
+    
+    // Listen for unhandled promise rejections
+    window.addEventListener('unhandledrejection', (event) => {
+      console.error('Unhandled rejection:', event.reason);
+      status.textContent = 'ERROR: ' + event.reason;
+      status.style.background = '#c00';
+    });
+    
+    // Check if element loaded
+    elementsApi.addEventListener('load', () => {
+      console.log('Elements API loaded');
+      status.textContent = 'Preview loaded ✓';
+      status.style.background = '#0a0';
+    });
+  </script>
+</body>
+</html>

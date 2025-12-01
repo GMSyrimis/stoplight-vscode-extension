@@ -1,0 +1,102 @@
+{
+  "name": "openapi-preview",
+  "displayName": "OpenAPI Preview",
+  "description": "Preview OpenAPI specifications using Stoplight Elements",
+  "version": "0.2.1",
+  "publisher": "stoplight",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "openapi",
+    "swagger",
+    "api",
+    "preview",
+    "documentation"
+  ],
+  "activationEvents": [
+    "onCommand:openapi-preview.openPreview",
+    "onCommand:openapi-preview.openPreviewToSide",
+    "onLanguage:yaml",
+    "onLanguage:json"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "openapi-preview.openPreview",
+        "title": "Open OpenAPI Preview",
+        "category": "OpenAPI"
+      },
+      {
+        "command": "openapi-preview.openPreviewToSide",
+        "title": "Open OpenAPI Preview to Side",
+        "category": "OpenAPI",
+        "icon": "$(open-preview)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "openapi-preview.openPreviewToSide",
+          "when": "openapi-preview.isOpenApiFile",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "openapi-preview.openPreview",
+          "when": "openapi-preview.isOpenApiFile"
+        },
+        {
+          "command": "openapi-preview.openPreviewToSide",
+          "when": "openapi-preview.isOpenApiFile"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "OpenAPI Preview",
+      "properties": {
+        "openapi-preview.previewColumn": {
+          "type": "string",
+          "enum": [
+            "beside",
+            "active"
+          ],
+          "default": "beside",
+          "description": "Where to open the preview panel"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "webpack --mode production",
+    "watch": "webpack --mode development --watch",
+    "package": "vsce package",
+    "lint": "eslint src --ext ts",
+    "test": "mocha --require ts-node/register 'src/**/*.test.ts'"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.75.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vscode/vsce": "^2.22.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "eslint": "^8.0.0",
+    "mocha": "^11.7.5",
+    "ts-loader": "^9.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.0.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.0"
+  },
+  "dependencies": {
+    "@stoplight/elements": "^8.0.0"
+  }
+}
