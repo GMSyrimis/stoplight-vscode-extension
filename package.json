@@ -4,6 +4,15 @@
   "description": "Preview OpenAPI specifications using Stoplight Elements",
   "version": "0.2.1",
   "publisher": "stoplight",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GMSyrimis/stoplight-vscode-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GMSyrimis/stoplight-vscode-extension/issues"
+  },
+  "homepage": "https://github.com/GMSyrimis/stoplight-vscode-extension#readme",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.75.0"
   },
