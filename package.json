@@ -35,12 +35,12 @@
     "commands": [
       {
         "command": "openapi-preview.openPreview",
-        "title": "Open OpenAPI Preview",
+        "title": "Open Stoplight Elements Preview",
         "category": "OpenAPI"
       },
       {
         "command": "openapi-preview.openPreviewToSide",
-        "title": "Open OpenAPI Preview to Side",
+        "title": "Open Stoplight Elements Preview to Side",
         "category": "OpenAPI",
         "icon": "$(open-preview)"
       }
@@ -65,7 +65,7 @@
       ]
     },
     "configuration": {
-      "title": "OpenAPI Preview",
+      "title": "Stoplight Elements Preview",
       "properties": {
         "openapi-preview.previewColumn": {
           "type": "string",
@@ -74,7 +74,7 @@
             "active"
           ],
           "default": "beside",
-          "description": "Where to open the preview panel"
+          "description": "Where to open the Stoplight Elements preview panel"
         }
       }
     }
