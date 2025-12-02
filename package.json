@@ -1,9 +1,9 @@
 {
   "name": "openapi-preview",
-  "displayName": "OpenAPI Preview",
-  "description": "Preview OpenAPI specifications using Stoplight Elements",
-  "version": "0.2.1",
-  "publisher": "stoplight",
+  "displayName": "Stoplight Elements Preview",
+  "description": "Preview OpenAPI specifications using Stoplight Elements with beautiful, interactive documentation",
+  "version": "0.2.2",
+  "publisher": "GMSyrimis",
   "repository": {
     "type": "git",
     "url": "https://github.com/GMSyrimis/stoplight-vscode-extension.git"
@@ -27,8 +27,6 @@
     "documentation"
   ],
   "activationEvents": [
-    "onCommand:openapi-preview.openPreview",
-    "onCommand:openapi-preview.openPreviewToSide",
     "onLanguage:yaml",
     "onLanguage:json"
   ],
