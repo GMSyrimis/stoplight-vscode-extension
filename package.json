@@ -13,6 +13,7 @@
   },
   "homepage": "https://github.com/GMSyrimis/stoplight-vscode-extension#readme",
   "license": "MIT",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.75.0"
   },
